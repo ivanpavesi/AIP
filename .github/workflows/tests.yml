@@ -1,0 +1,34 @@
+name: Python e PostgreSQL
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: aip_test
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - '127.0.0.1:5432:5432'
+        options: >-
+          --health-cmd 'pg_isready -U postgres -d aip_test'
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      # Solo il servizio effimero del job; nessuna password o connessione esterna.
+      AIP_TEST_DATABASE_URL: postgresql+psycopg://postgres@127.0.0.1:5432/aip_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.23'
+      - run: uv sync --frozen --extra dev
+      - run: uv run pytest -q

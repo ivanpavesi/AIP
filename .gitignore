@@ -218,3 +218,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# AIP: risorse locali, credenziali e risultati delle verifiche
+node_modules/
+.env.*
+!.env.example
+.local/
+artifacts/
+*.key
+*.pem

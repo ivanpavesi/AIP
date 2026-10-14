@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<main id="contenuto" class="mx-auto max-w-6xl px-6 pb-14 pt-12 sm:px-10 sm:pt-16" tabindex="-1">
+  <section aria-labelledby="titolo" class="hero">
+    <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Una piattaforma, una cura condivisa</p>
+    <h1 id="titolo" class="hero-title">Scuole di<br class="hidden sm:block"> Psicoterapia Cognitiva</h1>
+    <p class="hero-subtitle">Artificial Intelligence Platform <span class="text-teal-700">(AIP)</span></p>
+    <p class="hero-description">Uno spazio dedicato ai pazienti e ai professionisti.<br class="hidden sm:block"> La tecnologia al servizio del percorso di cura.</p>
+  </section>
+
+  <div class="section-heading"><p>Scegli la tua area</p><span>Pazienti e professionisti</span></div>
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+    <section aria-labelledby="paziente-titolo" class="access-card patient-card">
+      <div class="mb-7 flex items-start justify-between"><span class="icon-tile text-teal-700" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H6a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3"/><rect x="9" y="2" width="6" height="5" rx="1"/><path d="m8 14 2 2 6-6"/></svg></span><span class="card-number" aria-hidden="true">01</span></div>
+      <h2 id="paziente-titolo" class="card-title">Accesso Paziente</h2>
+      <p class="card-description">Il punto di accesso ai questionari del tuo percorso, quando il servizio sarà attivato.</p>
+      <div class="mt-7">
+        <label for="codice-personale" class="field-label">Codice personale</label>
+        <input id="codice-personale" type="text" class="code-input" placeholder="Il tuo codice personale" autocomplete="off" spellcheck="false" aria-describedby="codice-aiuto">
+        <p id="codice-aiuto" class="field-hint">Campo dimostrativo. Non inserire un codice reale.</p>
+        <!-- Nessun form/name: il valore del campo non viene trasmesso, nemmeno con HTMX. -->
+        <a href="{{ url_for('patient_area') }}" class="action-button bg-teal-700" hx-get="{{ url_for('patient_area') }}" hx-target="#patient-status" hx-swap="innerHTML" hx-params="none" aria-describedby="stato-piattaforma">Accedi ai questionari <span aria-hidden="true">→</span></a>
+        <div id="patient-status" role="status" aria-live="polite" aria-atomic="true"></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="terapeuta-titolo" class="access-card therapist-card flex flex-col">
+      <div class="mb-7 flex items-start justify-between"><span class="icon-tile text-midnight" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M4 22v-3a8 8 0 0 1 16 0v3M9 18h6m-3-3v6"/></svg></span><span class="card-number" aria-hidden="true">02</span></div>
+      <h2 id="terapeuta-titolo" class="card-title">Area Terapeuta</h2>
+      <p class="card-description">Lo spazio professionale dedicato ai terapeuti delle Scuole di Psicoterapia Cognitiva.</p>
+      <div class="professional-note"><span class="note-rule" aria-hidden="true"></span><p>Un ambiente pensato per accompagnare il lavoro clinico, con attenzione alla riservatezza delle persone.</p></div>
+      <a href="{{ url_for('therapist_area') }}" class="action-button bg-midnight mt-auto" aria-describedby="stato-piattaforma">Accedi all’area terapeuta <span aria-hidden="true">→</span></a>
+    </section>
+  </div>
+
+  <aside id="stato-piattaforma" class="platform-notice" aria-label="Stato della piattaforma">
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></svg>
+    <p><strong>Piattaforma in preparazione.</strong> Gli accessi non sono ancora attivi. Il sistema di accesso sicuro sarà disponibile in una fase successiva.</p>
+  </aside>
+</main>
+{% endblock %}

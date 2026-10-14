@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { font-family: 'Segoe UI', ui-sans-serif, system-ui, -apple-system, sans-serif; }
+  :focus-visible { outline: 3px solid #0F766E; outline-offset: 4px; }
+  main:focus { outline: none; }
+}
+@layer components {
+  .skip-link { @apply fixed left-4 top-4 z-50 rounded bg-midnight px-5 py-3 text-white; transform: translateY(-200%); }
+  .skip-link:focus { transform: translateY(0); }
+  .site-header { @apply bg-pearl; }
+  .institution-link { @apply rounded-2xl; }
+  .logo-placeholder { @apply flex h-20 w-56 items-center justify-center rounded-2xl border border-slate-200 bg-white text-sm text-slate-600; }
+  .hero { @apply text-center; }
+  .hero-title { @apply font-bold leading-[1.15] tracking-[-0.035em] md:whitespace-nowrap; font-size: clamp(2rem, 3.6vw, 3.25rem); }
+  .hero-subtitle { @apply mt-5 text-xl font-medium text-teal-700 sm:text-2xl; }
+  .hero-acronym { @apply mt-3 text-lg font-semibold tracking-[0.16em] text-teal-700; }
+  .access-grid { @apply mt-12 sm:mt-16; }
+  .card-heading { @apply flex items-center gap-4; }
+  .access-card { @apply rounded-2xl border border-slate-200 bg-white p-7 sm:p-9; box-shadow: 0 8px 28px -20px rgb(15 23 42 / 0.23); }
+  .icon-tile { @apply flex h-12 w-12 items-center justify-center rounded-xl bg-slate-50; }
+  .icon-tile svg { @apply h-6 w-6; }
+  .card-title { @apply text-2xl font-semibold tracking-tight; }
+  .card-description { @apply mt-6 text-base leading-7 text-slate-600; }
+  .field-label { @apply mb-2 block text-xs font-semibold uppercase tracking-wide; }
+  .code-input { @apply block min-h-12 w-full rounded-lg border border-slate-500 bg-white px-4 py-3 text-base placeholder:text-slate-500; }
+  .action-button { @apply flex min-h-12 w-full items-center justify-center gap-3 rounded-xl px-5 py-4 text-base font-semibold leading-6 text-white; }
+  .action-button:hover { filter: brightness(1.12); }
+  .action-button:focus-visible { outline-color: #0F172A; }
+  .action-button span { @apply text-xl font-normal; }
+  .professional-note { @apply my-8 flex gap-4 text-sm leading-6 text-slate-600; }
+  .note-rule { @apply w-px shrink-0 bg-slate-300; }
+  .unavailable-message { @apply mt-5 rounded-lg border border-teal-700 bg-teal-50 p-4 text-sm leading-6 text-midnight; }
+  .site-footer { @apply border-t border-slate-200 bg-white; }
+  .footer-name { @apply text-xs font-semibold text-slate-600; }
+  .footer-link { @apply flex min-h-11 items-center gap-2 rounded text-xs font-medium text-midnight underline underline-offset-4; }
+  .footer-link:hover { @apply text-teal-700; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }

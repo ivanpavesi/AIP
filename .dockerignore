@@ -1,0 +1,12 @@
+.git
+.venv
+.local
+node_modules
+artifacts
+.env
+.env.*
+*.key
+*.pem
+*.log
+__pycache__
+.pytest_cache

@@ -63,9 +63,11 @@ un audit completo con screen reader, test su Safari/Firefox o una valutazione co
 - Accessi e funzioni cliniche intenzionalmente non operativi.
 - Dockerfile preparato ma container non costruito o avviato.
 - Nessuna verifica Supabase o hosting remoto, nessuna connessione di produzione.
-- Workflow GitHub predisposto ma non eseguito: caricamento e apertura PR bloccati da
-  risposte GitHub 403, sia tramite Git sia tramite il connettore (scrittura non accessibile
-  all’integrazione). Le modifiche, il commit e il testo PR sono disponibili localmente.
+- Workflow GitHub avviato sulla [PR #1](https://github.com/ivanpavesi/AIP/pull/1).
+  Il blocco iniziale di autorizzazione è stato risolto dal committente; il commit
+  `3c9d0ab` è conservato sul branch remoto. Corrette le virgolette del comando
+  di health check del servizio PostgreSQL, richieste dal runner GitHub Actions.
+  L’esito aggiornato del workflow è consultabile nella PR.
 - Gestione dei permessi clinici, autenticazione, audit e ciclo di vita delle chiavi richiedono
   le fasi successive. Nessuna di queste funzionalità è stata avviata.
 

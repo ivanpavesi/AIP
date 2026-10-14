@@ -43,7 +43,7 @@ with sync_playwright() as playwright:
 
     # Ogni elemento interattivo è raggiungibile, nel corretto ordine, con Tab.
     page.goto(base_url, wait_until="networkidle")
-    expected = ["Vai al contenuto principale", "Scuole di Psicoterapia Cognitiva", "codice-personale", "Accedi ai questionari", "Accedi all’area terapeuta", "Accesso Ricercatore", "Accesso Amministratore"]
+    expected = ["Vai al contenuto principale", "Scuole di Psicoterapia Cognitiva", "codice-personale", "Accedi ai questionari", "Accedi all’area riservata", "Accesso Ricercatore", "Accesso Amministratore"]
     for item in expected:
         page.keyboard.press("Tab")
         active = page.evaluate("({id:document.activeElement.id,text:document.activeElement.textContent, label:document.activeElement.getAttribute('aria-label')})")
@@ -53,7 +53,7 @@ with sync_playwright() as playwright:
     requests.clear()
     page.locator("#codice-personale").fill("SYNTHETIC-NOT-A-CREDENTIAL")
     page.get_by_role("link", name="Accedi ai questionari").click()
-    page.locator("#patient-status").get_by_text("L’accesso non è ancora attivo.").wait_for()
+    page.locator("#patient-status").get_by_text("Accesso non disponibile.").wait_for()
     assert page.url.rstrip("/") == base_url
     assert any(request.headers.get("hx-request") == "true" for request in requests)
     assert all("SYNTHETIC-NOT-A-CREDENTIAL" not in request.url + (request.post_data or "") for request in requests)
@@ -62,11 +62,11 @@ with sync_playwright() as playwright:
     assert not context.cookies()
     report["checks"].extend(["HTMX mostra avviso senza inviare il codice", "Nessun cookie o errore JavaScript"])
 
-    for name, path in [("Accedi all’area terapeuta", "/terapeuta"), ("Accesso Ricercatore", "/ricercatore"), ("Accesso Amministratore", "/amministratore")]:
+    for name, path in [("Accedi all’area riservata", "/terapeuta"), ("Accesso Ricercatore", "/ricercatore"), ("Accesso Amministratore", "/amministratore")]:
         page.goto(base_url)
         page.get_by_role("link", name=name).click()
         assert page.url == base_url + path
-        page.get_by_text("L’accesso non è ancora attivo.").wait_for()
+        page.get_by_text("Accesso non disponibile.").wait_for()
     report["checks"].append("Collegamenti terapeuta, ricercatore e amministratore verificati")
 
     no_js = browser.new_context(java_script_enabled=False)
@@ -74,7 +74,7 @@ with sync_playwright() as playwright:
     fallback.goto(base_url)
     fallback.get_by_role("link", name="Accedi ai questionari").click()
     assert fallback.url == base_url + "/paziente"
-    fallback.get_by_text("L’accesso non è ancora attivo.").wait_for()
+    fallback.get_by_text("Accesso non disponibile.").wait_for()
     report["checks"].append("Accesso paziente mostra la pagina informativa anche senza JavaScript")
     browser.close()
 

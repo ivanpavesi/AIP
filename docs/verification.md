@@ -68,3 +68,21 @@ un audit completo con screen reader, test su Safari/Firefox o una valutazione co
   all’integrazione). Le modifiche, il commit e il testo PR sono disponibili localmente.
 - Gestione dei permessi clinici, autenticazione, audit e ciclo di vita delle chiavi richiedono
   le fasi successive. Nessuna di queste funzionalità è stata avviata.
+
+## Revisione della homepage su richiesta del committente
+
+Rimosse dalla homepage le indicazioni sullo stato di sviluppo, lo slogan e l’avviso
+sul campo codice. Titolo centrato senza interruzioni su desktop; sottotitolo
+“Artificial Intelligence Platform” e sigla “AIP” su righe distinte. Card e footer
+ridisposti secondo il riferimento visivo. Su schermi piccoli il titolo può andare
+a capo per mantenere leggibilità e assenza di overflow.
+
+Gli accessi continuano a non eseguire autenticazione: dopo un clic appare soltanto
+un messaggio neutro “Accesso non disponibile.”, senza riferimenti a fasi future.
+Non sono state aggiunte dichiarazioni su 2FA o funzioni cliniche inesistenti.
+
+Verifiche della revisione: **24 test passati, 1 test PostgreSQL saltato** perché il
+database locale non era configurato per questa esecuzione. Il codice di database
+non è stato modificato. Rieseguiti build degli asset e controllo browser completo:
+zero violazioni axe a 1440/390/320 px, ordine Tab, HTMX, mancata trasmissione del
+codice, collegamenti e fallback senza JavaScript verificati.

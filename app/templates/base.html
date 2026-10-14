@@ -3,28 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Scuole di Psicoterapia Cognitiva — Artificial Intelligence Platform (AIP). Piattaforma in preparazione per pazienti e professionisti.">
+  <meta name="description" content="Scuole di Psicoterapia Cognitiva — Artificial Intelligence Platform (AIP). Piattaforma dedicata a pazienti e professionisti.">
   <meta name="htmx-config" content='{"includeIndicatorStyles":false,"allowEval":false,"allowScriptTags":false,"selfRequestsOnly":true}'>
   <title>{% block title %}Scuole di Psicoterapia Cognitiva — AIP{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', path='/css/app.css') }}">
   <script src="{{ url_for('static', path='/js/htmx.min.js') }}" defer></script>
 </head>
-<body class="bg-pearl text-midnight antialiased">
+<body class="flex min-h-screen flex-col bg-pearl text-midnight antialiased">
   <a href="#contenuto" class="skip-link">Vai al contenuto principale</a>
   <header class="site-header">
-    <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-6 sm:px-10">
+    <div class="flex justify-center px-6 pt-10 sm:pt-12">
       <a class="institution-link" href="{{ url_for('home') }}" aria-label="Scuole di Psicoterapia Cognitiva — homepage">
-        <span class="logo-placeholder" aria-label="Spazio riservato al logo ufficiale">Logo<br>istituzionale</span>
-        <span class="institution-name">Scuole di<br>Psicoterapia Cognitiva</span>
+        <span class="logo-placeholder" aria-label="Spazio riservato al logo ufficiale">Logo istituzionale</span>
       </a>
-      <span class="platform-label">AIP <span aria-hidden="true">/</span> Piattaforma istituzionale</span>
     </div>
   </header>
   {% block content %}{% endblock %}
   <footer class="site-footer">
-    <div class="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-7 sm:px-10 md:flex-row md:items-center md:justify-between">
-      <p class="footer-name">Scuole di Psicoterapia Cognitiva <span class="block text-xs font-normal mt-1">Artificial Intelligence Platform</span></p>
-      <nav aria-label="Accessi ricerca e amministrazione" class="flex flex-wrap gap-x-7 gap-y-2">
+    <div class="mx-auto flex max-w-6xl justify-center px-6 py-7 sm:px-10">
+      <nav aria-label="Accessi ricerca e amministrazione" class="flex flex-wrap justify-center gap-x-10 gap-y-2">
         <a class="footer-link" href="{{ url_for('researcher_area') }}">Accesso Ricercatore <svg aria-hidden="true" class="h-3 w-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M4 4h8v8"/></svg></a>
         <a class="footer-link" href="{{ url_for('administrator_area') }}">Accesso Amministratore <svg aria-hidden="true" class="h-3 w-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M4 4h8v8"/></svg></a>
       </nav>

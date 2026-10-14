@@ -15,7 +15,10 @@ def test_homepage_and_local_assets(client):
     assert not page.select("form")
     action = page.select_one("[hx-get]")
     assert action["hx-params"] == "none"
-    assert "Gli accessi non sono ancora attivi" in response.text
+    assert not page.select("#stato-piattaforma, #codice-aiuto")
+    assert not page.h1.select("br")
+    assert page.select_one(".hero-subtitle").get_text(strip=True) == "Artificial Intelligence Platform"
+    assert page.select_one(".hero-acronym").get_text(strip=True) == "AIP"
     for asset in ["/static/css/app.css", "/static/js/htmx.min.js"]:
         assert client.get(asset).status_code == 200
     assert not response.cookies
@@ -29,7 +32,7 @@ def test_future_areas_are_explicitly_unavailable(client, path, title):
     response = client.get(path)
     assert response.status_code == 200
     assert title in response.text
-    assert "L’accesso non è ancora attivo." in response.text
+    assert "Accesso non disponibile." in response.text
     assert not response.cookies
     assert client.post(path, data={"code": "synthetic-example"}).status_code == 405
 
@@ -37,7 +40,7 @@ def test_future_areas_are_explicitly_unavailable(client, path, title):
 def test_htmx_returns_only_unavailable_message(client):
     response = client.get("/paziente", headers={"HX-Request": "true"})
     assert response.status_code == 200
-    assert "L’accesso non è ancora attivo." in response.text
+    assert "Accesso non disponibile." in response.text
     assert "<html" not in response.text
     assert response.headers["vary"] == "HX-Request"
 

@@ -2,11 +2,9 @@
 {% block title %}{{ area.title }} — AIP{% endblock %}
 {% block content %}
 <main id="contenuto" class="mx-auto max-w-6xl px-6 py-16 sm:px-10" tabindex="-1">
-  <p class="eyebrow">Piattaforma in preparazione</p>
   <h1 class="mt-5 text-4xl font-semibold tracking-tight">{{ area.title }}</h1>
   <div class="mt-8 max-w-2xl access-card">
     {% include "partials/unavailable.html" %}
-    <p class="mt-4 text-slate-600 leading-relaxed">Nessuna autenticazione viene eseguita e nessun dato clinico viene raccolto in questa versione.</p>
     <a href="{{ url_for('home') }}" class="action-button bg-midnight mt-8">Torna alla homepage <span aria-hidden="true">←</span></a>
   </div>
 </main>

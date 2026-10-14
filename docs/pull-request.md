@@ -1,8 +1,8 @@
-Lo STEP 1 introduce la homepage istituzionale di AIP e la struttura Python 3.12 con FastAPI, SQLAlchemy 2, Alembic e PostgreSQL. La homepage funziona senza credenziali, database o chiavi configurate; i quattro percorsi di accesso mostrano esplicitamente che le aree non sono ancora operative.
+Lo STEP 1 introduce la homepage istituzionale di AIP e la struttura Python 3.12 con FastAPI, SQLAlchemy 2, Alembic e PostgreSQL. La homepage funziona senza credenziali, database o chiavi configurate; i quattro percorsi di accesso restituiscono un messaggio neutro di indisponibilità, senza simulare autenticazione.
 
 ## Modifiche
 
-- Homepage Jinja2 responsive, palette richiesta, spazio per il logo ufficiale, card paziente/terapeuta e collegamenti ricerca/amministrazione.
+- Homepage Jinja2 responsive con titolo centrato su una riga desktop, sottotitolo e sigla AIP su righe separate, palette richiesta, spazio per il logo ufficiale, card paziente/terapeuta e collegamenti ricerca/amministrazione. Nessuno slogan o avviso sullo stato di sviluppo nella homepage.
 - Tailwind compilato e HTMX serviti localmente; il campo codice paziente non viene inviato né memorizzato. Fallback informativo anche senza JavaScript.
 - Moduli distinti per configurazione Pydantic, database, sicurezza, route, servizi, template e test.
 - Modelli utenti, identità pazienti e cartelle cliniche; identità e dati clinici in schemi PostgreSQL distinti, con riferimenti UUID pseudonimi.

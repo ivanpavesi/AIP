@@ -9,8 +9,8 @@ class AreaInfo(BaseModel):
 
 
 AREAS = {
-    "paziente": AreaInfo(title="Accesso Paziente", description="I questionari saranno disponibili dopo l'attivazione del sistema di accesso sicuro."),
-    "terapeuta": AreaInfo(title="Area Terapeuta", description="L'area professionale sarà disponibile dopo l'attivazione del sistema di accesso sicuro."),
-    "ricercatore": AreaInfo(title="Accesso Ricercatore", description="L'area dedicata alla ricerca è prevista in una fase successiva."),
-    "amministratore": AreaInfo(title="Accesso Amministratore", description="L'area di amministrazione è prevista in una fase successiva."),
+    "paziente": AreaInfo(title="Accesso Paziente", description="Accesso ai questionari."),
+    "terapeuta": AreaInfo(title="Area Terapeuta", description="Area riservata ai professionisti."),
+    "ricercatore": AreaInfo(title="Accesso Ricercatore", description="Area riservata alla ricerca."),
+    "amministratore": AreaInfo(title="Accesso Amministratore", description="Area riservata all’amministrazione."),
 }
